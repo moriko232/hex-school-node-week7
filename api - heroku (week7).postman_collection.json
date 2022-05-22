@@ -1,0 +1,627 @@
+{
+	"info": {
+		"_postman_id": "1b8d4bd2-6e3e-474b-ae87-846c0c5a0607",
+		"name": "api - heroku (week7)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "取得所有貼文",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Authorization}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://ancient-chamber-81655.herokuapp.com/posts?timeSort=desc",
+							"protocol": "https",
+							"host": [
+								"ancient-chamber-81655",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"posts"
+							],
+							"query": [
+								{
+									"key": "timeSort",
+									"value": "desc"
+								},
+								{
+									"key": "q",
+									"value": "超讚",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增貼文",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"發現神秘洞窟\",\r\n    \"content\": \"徵求冒險夥伴\",\r\n    \"imgUrl\": \"\",\r\n    \"tag\": \"新聞\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ancient-chamber-81655.herokuapp.com/post",
+							"protocol": "https",
+							"host": [
+								"ancient-chamber-81655",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除所有貼文",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ancient-chamber-81655.herokuapp.com/posts",
+							"protocol": "https",
+							"host": [
+								"ancient-chamber-81655",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除一筆貼文",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ancient-chamber-81655.herokuapp.com/post/627757d42a6a34b5eeeb6ee2",
+							"protocol": "https",
+							"host": [
+								"ancient-chamber-81655",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"post",
+								"627757d42a6a34b5eeeb6ee2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "編輯一筆貼文",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tag\": \"心情\",\r\n    \"userName\": \"老皮\",\r\n    \"title\": \"演唱會嗨到爆><\",\r\n    \"content\": \"超讚\",\r\n    \"imgUrl\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ancient-chamber-81655.herokuapp.com/post/6263d57fadf135fe8888151f",
+							"protocol": "https",
+							"host": [
+								"ancient-chamber-81655",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"post",
+								"6263d57fadf135fe8888151f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "按讚貼文",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ancient-chamber-81655.herokuapp.com/post/6289e749b126c1d104a9fb40/likes",
+							"protocol": "https",
+							"host": [
+								"ancient-chamber-81655",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"post",
+								"6289e749b126c1d104a9fb40",
+								"likes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取消按讚貼文",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ancient-chamber-81655.herokuapp.com/post/6289e749b126c1d104a9fb40/likes",
+							"protocol": "https",
+							"host": [
+								"ancient-chamber-81655",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"post",
+								"6289e749b126c1d104a9fb40",
+								"likes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得會員貼文",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ancient-chamber-81655.herokuapp.com/post/user/6289e712b126c1d104a9fb39",
+							"protocol": "https",
+							"host": [
+								"ancient-chamber-81655",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"post",
+								"user",
+								"6289e712b126c1d104a9fb39"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得按讚列表",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ancient-chamber-81655.herokuapp.com/post/likelist",
+							"protocol": "https",
+							"host": [
+								"ancient-chamber-81655",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"post",
+								"likelist"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "列出所有會員",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ancient-chamber-81655.herokuapp.com/users",
+							"protocol": "https",
+							"host": [
+								"ancient-chamber-81655",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "會員登入",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"aaa@gmail.com\",\r\n    \"password\": \"a123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ancient-chamber-81655.herokuapp.com/user/login",
+							"protocol": "https",
+							"host": [
+								"ancient-chamber-81655",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "會員註冊",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\": \"老皮\",\r\n    \"email\": \"bbb@gmail.com\",\r\n    \"password\": \"a123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ancient-chamber-81655.herokuapp.com/user/sign_up",
+							"protocol": "https",
+							"host": [
+								"ancient-chamber-81655",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"user",
+								"sign_up"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得會員資料",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ancient-chamber-81655.herokuapp.com/user/profile",
+							"protocol": "https",
+							"host": [
+								"ancient-chamber-81655",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"user",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改會員資料",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\": \"阿寶\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ancient-chamber-81655.herokuapp.com/user/profile",
+							"protocol": "https",
+							"host": [
+								"ancient-chamber-81655",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"user",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "重設密碼",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\": \"a123456789\",\r\n    \"password\": \"b123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ancient-chamber-81655.herokuapp.com/user/updatePassword",
+							"protocol": "https",
+							"host": [
+								"ancient-chamber-81655",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"user",
+								"updatePassword"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Upload",
+			"item": [
+				{
+					"name": "上傳圖片",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "",
+									"type": "file",
+									"src": "/C:/Users/morik/Desktop/aaa.txt",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"type": "file",
+									"src": "/C:/Users/morik/Desktop/async-cheatsheet.png",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"type": "file",
+									"src": "/C:/Users/morik/Desktop/unnamed .jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
