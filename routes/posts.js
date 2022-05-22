@@ -52,6 +52,7 @@ router.post(
   })
 );
 
+// 刪除所有POSTS
 router.delete(
   "/posts",
   isAuth,
@@ -63,6 +64,7 @@ router.delete(
   })
 );
 
+// 刪除單筆POST
 router.delete(
   "/post/:id",
   isAuth,
@@ -87,8 +89,8 @@ router.patch(
     const data = req.body;
     const id = req.params.id;
 
-    const findUserId = await Post.findById(id);
-    if (findUserId === null) {
+    const findPostId = await Post.findById(id);
+    if (findPostId === null) {
       appError({ errMessage: "文章不存在" }, next);
       return;
     }
@@ -108,6 +110,78 @@ router.patch(
       const allData = await Post.find();
       successHandler(res, allData);
     });
+  })
+);
+
+// 按讚
+router.post(
+  "/post/:id/likes",
+  isAuth,
+  handleErrAsync(async (req, res, next) => {
+    const postId = req.params.id;
+    const UserId = req.user.id;
+
+    const findPostId = await Post.findById(postId);
+    if (findPostId === null) {
+      appError({ errMessage: "按讚的文章不存在" }, next);
+      return;
+    }
+    // console.log("req.user.", req.user);
+
+    const post = {
+      $addToSet: { likes: UserId },
+    };
+    await Post.findOneAndUpdate({ _id: postId }, post).then(async () => {
+      const allData = await Post.find();
+      successHandler(res, allData);
+    });
+  })
+);
+
+// 取消讚
+router.delete(
+  "/post/:id/likes",
+  isAuth,
+  handleErrAsync(async (req, res, next) => {
+    const postId = req.params.id;
+    const UserId = req.user.id;
+
+    const findPostId = await Post.findById(postId);
+    if (findPostId === null) {
+      appError({ errMessage: "取消讚的文章不存在" }, next);
+      return;
+    }
+    // console.log("req.user.", req.user);
+
+    const post = {
+      $pull: { likes: UserId },
+    };
+    await Post.findOneAndUpdate({ _id: postId }, post).then(async () => {
+      const allData = await Post.find();
+      successHandler(res, allData);
+    });
+  })
+);
+
+// 取得會員文章
+router.get(
+  "/post/user/:id",
+  handleErrAsync(async (req, res, next) => {
+    const userId = req.params.id;
+    const posts = await Post.find({ userData: userId });
+    successHandler(res, { posts });
+  })
+);
+
+// 取得會員自己的按讚列表
+router.get(
+  "/post/likelist",
+  isAuth,
+  handleErrAsync(async (req, res, next) => {
+    console.log("user id", req.user);
+    const userId = req.user.id;
+    const posts = await Post.find({ likes: { $in: [userId] } });
+    successHandler(res, { posts });
   })
 );
 

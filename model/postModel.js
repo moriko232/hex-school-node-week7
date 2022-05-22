@@ -26,17 +26,19 @@ const postSchema = new mongoose.Schema(
       type: String,
       required: [true, "標籤必填"],
     },
-    likes: {
-      type: Number,
-      default: 0,
-    },
+    likes: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: "user", // id要去找user的那張表的ID
+      },
+    ],
     comments: {
       type: Number,
       default: 0,
     },
     createAt: {
       type: Date,
-      default: Date.now
+      default: Date.now,
     },
   },
   { versionKey: false } //  Mongoose 檔案的內部修訂號。
