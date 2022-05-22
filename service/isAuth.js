@@ -31,9 +31,9 @@ async function isAuth(req, res, next) {
   });
   // console.log("decodeJWT", decodeJWT);
 
-  const currentUser = await User.findOne({ id: decodeJWT.id });
+  const currentUser = await User.findOne({ _id: decodeJWT.id });
   // console.log("currentUser", currentUser);
-  
+
   // 將通過的user寫到req再傳回
   req.user = currentUser;
 
